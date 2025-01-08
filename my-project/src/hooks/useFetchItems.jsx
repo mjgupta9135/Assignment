@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 
-export default function useFetchItems(currCategory, page, sort) {
+export default function useFetchItems(
+  currCategory,
+  page,
+  sort,
+  setLoadShimmer
+) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -23,6 +28,8 @@ export default function useFetchItems(currCategory, page, sort) {
         setItems(sortedItems);
       } catch (err) {
         console.log({ "error while fetching category items": err });
+      } finally {
+        setLoadShimmer(false);
       }
     };
     fetchItems();

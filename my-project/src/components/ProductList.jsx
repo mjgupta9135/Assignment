@@ -1,18 +1,21 @@
 import React from "react";
-import Block from "./Card";
+import Card from "./Card";
+import Shimmer from "./Shimmer";
 
 export default function ProductList({ items }) {
   return (
-    <div className="products mt-44">
+    <div
+      className=" p-6 mt-10 flex flex-col justify-between
+     items-center min-h-[300px]"
+    >
       {items.length === 0 ? (
-        <div className="loading">
-          <img
-            src="https://cdn.pixabay.com/animation/2023/10/08/03/19/03-19-26-213_512.gif"
-            alt="loading..."
-          />
-        </div>
+        <Shimmer />
       ) : (
-        items.map((item, key) => <Block key={key} data={item} />)
+        <div className="grid grid-cols-1 gap-20 sm:grid-cols-2 lg:grid-cols-3  ">
+          {items.map((item, key) => (
+            <Card key={key} data={item} />
+          ))}
+        </div>
       )}
     </div>
   );
