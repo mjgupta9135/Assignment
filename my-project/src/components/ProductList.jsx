@@ -3,7 +3,7 @@ import Block from "./Card";
 
 export default function ProductList({ items }) {
   return (
-    <div className="products">
+    <div className="products mt-44">
       {items.length === 0 ? (
         <div className="loading">
           <img
